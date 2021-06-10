@@ -15,6 +15,8 @@ class Tournoi extends Model
         'date',
         'adresse',
         'classement',
+        'niveau_id',
+        'organisateur_id',
     ];
     public function parties(){
         return $this->hasMany(Partie::class);
