@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Partie extends Model
 {
     use HasFactory;
+
+
+    public function tournoi()
+    {
+        return $this->belongsTo(Tournoi::class);
+    }
 }

@@ -14,7 +14,8 @@ class JoueurController extends Controller
      */
     public function index()
     {
-        //
+        $joueurs = Joueur::all();
+        return view('joueurs', compact('joueurs'));
     }
 
     /**
@@ -24,7 +25,7 @@ class JoueurController extends Controller
      */
     public function create()
     {
-        //
+        return view('create_joueur');
     }
 
     /**
@@ -35,7 +36,8 @@ class JoueurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Manga::create($request->all());
+        return view('confirm');
     }
 
     /**
@@ -46,7 +48,9 @@ class JoueurController extends Controller
      */
     public function show(Joueur $joueur)
     {
-        //
+        $parties = $joueur->with('parties')->get();
+        $niveau = $joueur->niveau;
+        return view('joueur', compact('joueur', 'parties', 'niveau'));
     }
 
     /**
@@ -57,7 +61,7 @@ class JoueurController extends Controller
      */
     public function edit(Joueur $joueur)
     {
-        //
+        return view('edit', compact('joueur'));
     }
 
     /**
@@ -69,7 +73,8 @@ class JoueurController extends Controller
      */
     public function update(Request $request, Joueur $joueur)
     {
-        //
+        $joueur->update($request->all());
+        return redirect()->back()->with('info', 'le joueur a bien été modifié dans la base de données');
     }
 
     /**
@@ -80,6 +85,7 @@ class JoueurController extends Controller
      */
     public function destroy(Joueur $joueur)
     {
-        //
+        $joueur->delete();
+        return back()->with('info', 'le joueur a été correctement supprimé de la base de données');
     }
 }
