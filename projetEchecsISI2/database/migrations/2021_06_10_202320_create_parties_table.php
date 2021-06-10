@@ -15,6 +15,25 @@ class CreatePartiesTable extends Migration
     {
         Schema::create('parties', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->unsignedBigInteger('joueur1_id');
+            $table->foreign('joueur1_id')
+                ->references('id')
+                ->on('joueurs')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->unsignedBigInteger('joueur2_id');
+            $table->foreign('joueur2_id')
+                ->references('id')
+                ->on('joueurs')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->unsignedBigInteger('ouverture_id');
+            $table->foreign('ouverture_id')
+                ->references('id')
+                ->on('ouvertures')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

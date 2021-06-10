@@ -15,6 +15,14 @@ class CreateOuverturesTable extends Migration
     {
         Schema::create('ouvertures', function (Blueprint $table) {
             $table->id();
+            $table->text('nom');
+            $table->text('premiersCoups');
+            $table->unsignedBigInteger('ouverture_id');
+            $table->foreign('ouverture_id')
+                ->references('id')
+                ->on('ouvertures')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }
