@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTournoisTable extends Migration
+class CreateParticipeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,21 @@ class CreateTournoisTable extends Migration
      */
     public function up()
     {
-        Schema::create('tournois', function (Blueprint $table) {
+        Schema::create('participe', function (Blueprint $table) {
             $table->id();
-            $table->text('nom');
-            $table->date('date');
-            $table->text('adresse');
-            $table->text('classement');
-            $table->unsignedBigInteger('niveau_id');
-            $table->foreign('niveau_id')
+            $table->unsignedBigInteger('joueur_id');
+            $table->foreign('joueur_id')
                 ->references('id')
-                ->on('niveaux')
+                ->on('joueurs')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->unsignedBigInteger('organisateur_id');
-            $table->foreign('organisateur_id')
+            $table->unsignedBigInteger('tournoi_id');
+            $table->foreign('tournoi_id')
                 ->references('id')
-                ->on('organisateurs')
+                ->on('tournois')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->text('score');
             $table->timestamps();
         });
     }
@@ -42,6 +39,6 @@ class CreateTournoisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tournois');
+        Schema::dropIfExists('participe');
     }
 }

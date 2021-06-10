@@ -16,8 +16,7 @@ class CreateNiveauxTable extends Migration
         Schema::create('niveaux', function (Blueprint $table) {
             $table->id();
             $table->text('nom');
-            $table->foreign('eloMin')
-                ->references('');
+            $table->integer('eloMin');
             $table->integer('eloMax');
             $table->timestamps();
         });
