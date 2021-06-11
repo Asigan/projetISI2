@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Organisateur;
-use App\Models\Tournoi;
 use Illuminate\Http\Request;
 
 class OrganisateurController extends Controller
@@ -49,8 +48,8 @@ class OrganisateurController extends Controller
      */
     public function show(Organisateur $organisateur)
     {
-        $tournois = Tournoi::all();
-        return view('organisateur', compact('organisateur', 'tournois'));
+        $organisateur->with('tournois')->get();
+        return view('organisateur', compact('organisateur'));
     }
 
     /**
