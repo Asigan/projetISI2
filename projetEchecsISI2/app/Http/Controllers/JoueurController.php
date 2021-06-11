@@ -82,7 +82,7 @@ class JoueurController extends Controller
     public function update(Request $request, Joueur $joueur)
     {
         $joueur->update($request->all());
-        return redirect()->back()->with('info', 'le joueur a bien été modifié dans la base de données');
+        return redirect()->back()->with('info', 'Le joueur a bien été modifié dans la base de données');
     }
 
     /**
@@ -94,6 +94,6 @@ class JoueurController extends Controller
     public function destroy(Joueur $joueur)
     {
         $joueur->delete();
-        return back()->with('info', 'le joueur a été correctement supprimé de la base de données');
+        return back()->with('info', 'Le joueur a été correctement supprimé de la base de données');
     }
 }

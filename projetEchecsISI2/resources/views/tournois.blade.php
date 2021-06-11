@@ -18,15 +18,15 @@
     </div>
 @endif
 
-    <div class="card-body">
-        <form action="{{ route('joueurs.create') }}" method="get">
-            <button class="btn btn-success" type="submit">Ajouter un joueur</button>
-        </form>
-    </div>
+<div class="card-body">
+    <form action="{{ route('tournois.create') }}" method="get">
+        <button class="btn btn-success" type="submit">Ajouter un tournoi</button>
+    </form>
+</div>
 
 <div class="card">
         <header class="card-header">
-            <h5 class="card-header-title">Voici nos joueurs</h5>
+            <h5 class="card-header-title">Voici nos tournois</h5>
         </header>
         <div class="card-content">
             <div class="content">
@@ -34,20 +34,18 @@
                     <thead>
                     <tr>
                         <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Nationalite</th>
+                        <th>Date</th>
                         <th></th>
                         <th></th>
                     </tr>
                     </thead>
-                    @foreach($joueurs as $joueur)
+                    @foreach($tournois as $tournoi)
                         <tr>
-                            <td> {{ $joueur->nom }} </td>
-                            <td> {{ $joueur->prenom }} </td>
-                            <td> {{ $joueur->nationalite }} </td>
-                            <td><a class="btn btn-primary" href="{{route('joueurs.show', $joueur->id) }}">Voir</a></td>
+                            <td> {{ $tournoi->nom }} </td>
+                            <td> {{ $tournoi->date }} </td>
+                            <td><a class="btn btn-primary" href="{{route('tournois.show', $tournoi->id) }}">Voir</a></td>
                             <td>
-                                <form action="{{ route('joueurs.destroy', $joueur->id) }}" method="post">
+                                <form action="{{ route('tournois.destroy', $tournoi->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger" type="submit">Supprimer</button>

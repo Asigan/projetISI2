@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tournoi;
+use App\Models\Niveau;
+use App\Models\Organisateur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TournoiController extends Controller
 {
@@ -14,7 +17,8 @@ class TournoiController extends Controller
      */
     public function index()
     {
-        //
+        $tournois = Tournoi::all();
+        return view('tournois', compact('tournois'));
     }
 
     /**
@@ -24,7 +28,9 @@ class TournoiController extends Controller
      */
     public function create()
     {
-        //
+        $niveaux = Niveau::all();
+        $organisateurs = Organisateur::all();
+        return view('create_tournoi', compact('niveaux', 'organisateurs'));
     }
 
     /**
@@ -35,7 +41,15 @@ class TournoiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('tournois')->insert([
+            'nom' => $request->nom,
+            'date' => $request->date,
+            'adresse' => $request->adresse,
+            'classement' => $request->classement,
+            'niveau_id' => $request->niveau,
+            'organisateur_id' => $request->organisateur
+        ]);
+        return view('confirm');
     }
 
     /**
@@ -46,7 +60,9 @@ class TournoiController extends Controller
      */
     public function show(Tournoi $tournoi)
     {
-        //
+        $organisateur = $tournoi->organisateur;
+        $niveau = $tournoi->niveau;
+        return view('tournoi', compact('tournoi', 'organisateur', 'niveau'));
     }
 
     /**
@@ -57,7 +73,7 @@ class TournoiController extends Controller
      */
     public function edit(Tournoi $tournoi)
     {
-        //
+        return view('edit', compact('tournoi'));
     }
 
     /**
@@ -69,7 +85,8 @@ class TournoiController extends Controller
      */
     public function update(Request $request, Tournoi $tournoi)
     {
-        //
+        $tournoi->update($request->all());
+        return redirect()->back()->with('info', 'Le tournoi a bien été modifié dans la base de données');
     }
 
     /**
@@ -80,6 +97,7 @@ class TournoiController extends Controller
      */
     public function destroy(Tournoi $tournoi)
     {
-        //
+        $tournoi->delete();
+        return back()->with('info', 'Le tournoi a été correctement supprimé de la base de données');
     }
 }

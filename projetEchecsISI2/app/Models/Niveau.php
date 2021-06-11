@@ -16,8 +16,10 @@ class Niveau extends Model
         'eloMax',
     ];
 
-    public function joueurs()
-    {
+    public function joueurs(){
         return $this->hasMany(Joueur::class);
+    }
+    public function tournois(){
+        return $this->hasMany(Tournoi::class);
     }
 }

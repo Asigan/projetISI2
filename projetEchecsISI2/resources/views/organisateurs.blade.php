@@ -18,15 +18,15 @@
     </div>
 @endif
 
-    <div class="card-body">
-        <form action="{{ route('joueurs.create') }}" method="get">
-            <button class="btn btn-success" type="submit">Ajouter un joueur</button>
-        </form>
-    </div>
+<div class="card-body">
+    <form action="{{ route('organisateurs.create') }}" method="get">
+        <button class="btn btn-success" type="submit">Ajouter un organisateur</button>
+    </form>
+</div>
 
 <div class="card">
         <header class="card-header">
-            <h5 class="card-header-title">Voici nos joueurs</h5>
+            <h5 class="card-header-title">Voici nos organisateurs</h5>
         </header>
         <div class="card-content">
             <div class="content">
@@ -34,20 +34,16 @@
                     <thead>
                     <tr>
                         <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Nationalite</th>
                         <th></th>
                         <th></th>
                     </tr>
                     </thead>
-                    @foreach($joueurs as $joueur)
+                    @foreach($organisateurs as $organisateur)
                         <tr>
-                            <td> {{ $joueur->nom }} </td>
-                            <td> {{ $joueur->prenom }} </td>
-                            <td> {{ $joueur->nationalite }} </td>
-                            <td><a class="btn btn-primary" href="{{route('joueurs.show', $joueur->id) }}">Voir</a></td>
+                            <td> {{ $organisateur->nom }} </td>
+                            <td><a class="btn btn-primary" href="{{route('organisateurs.show', $organisateur->id) }}">Tournois</a></td>
                             <td>
-                                <form action="{{ route('joueurs.destroy', $joueur->id) }}" method="post">
+                                <form action="{{ route('organisateurs.destroy', $organisateur->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger" type="submit">Supprimer</button>

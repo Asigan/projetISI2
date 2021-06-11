@@ -13,4 +13,8 @@ class Organisateur extends Model
         'id',
         'nom',
     ];
+
+    public function tournois(){
+        return $this->hasMany(Tournoi::class);
+    }
 }

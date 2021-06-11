@@ -31,7 +31,7 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <select name="niveau" id="niveau" size="1">
+                        Niveau du joueur : <select name="niveau" id="niveau" size="1">
                             @foreach($niveaux as $niveau)
                                 <option value="{{ $niveau->id }}">{{ $niveau->id }}</option>
                             @endforeach

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JoueurController;
+use App\Http\Controllers\TournoiController;
+use App\Http\Controllers\NiveauController;
+use App\Http\Controllers\OrganisateurController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +23,11 @@ Route::get('/', function () {
 
 Route::get('joueurs',[JoueurController::class, 'index']);
 Route::resource('joueurs',JoueurController::class);
+
+Route::get('tournois',[TournoiController::class, 'index']);
+Route::resource('tournois',TournoiController::class);
+
+Route::get('niveaux',[NiveauController::class, 'index']);
+
+Route::get('organisateurs',[OrganisateurController::class, 'index']);
+Route::resource('organisateurs',OrganisateurController::class);
