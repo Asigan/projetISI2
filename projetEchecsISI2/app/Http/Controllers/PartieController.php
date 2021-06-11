@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Partie;
+use App\Models\Joueur;
 use Illuminate\Http\Request;
 
 class PartieController extends Controller
@@ -14,7 +15,8 @@ class PartieController extends Controller
      */
     public function index()
     {
-        //
+        $parties = Partie::all();
+        return view('parties', compact('parties'));
     }
 
     /**
@@ -24,7 +26,7 @@ class PartieController extends Controller
      */
     public function create()
     {
-        //
+        return view('create_partie');
     }
 
     /**
@@ -46,7 +48,7 @@ class PartieController extends Controller
      */
     public function show(Partie $partie)
     {
-        //
+        return view('partie', compact('partie'));
     }
 
     /**

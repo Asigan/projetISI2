@@ -25,6 +25,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="{{url('joueurs')}}">Les joueurs</a></li>
                                 <li><a class="dropdown-item" href="{{url('niveaux')}}">Les niveaux</a></li>
+                                <li><a class="dropdown-item" href="{{url('parties')}}">Les parties</a></li>
                                 <li><a class="dropdown-item" href="{{url('tournois')}}">Les tournois</a></li>
                                 <li><a class="dropdown-item" href="{{url('organisateurs')}}">Les organisateurs</a></li>
                             </ul>
