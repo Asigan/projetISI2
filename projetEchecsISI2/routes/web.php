@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('joueurs',[JoueurController::class, 'index']);
+Route::resource('joueurs',JoueurController::class);
