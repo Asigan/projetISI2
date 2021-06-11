@@ -24,4 +24,10 @@ class Tournoi extends Model
     public function joueurs(){
         return $this->belongsToMany(Joueur::class, 'participes');
     }
+    public function organisateur(){
+        return $this->belongsTo(Organisateur::class);
+    }
+    public function niveau(){
+        return $this->belongsTo(Niveau::class);
+    }
 }

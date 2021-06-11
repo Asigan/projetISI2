@@ -1,5 +1,5 @@
 @extends('layout')
 
 @section('contenu')
-<p>Le joueur a bien été ajouté</p>
+<p>Le changement a bien été effectué</p>
 @endsection

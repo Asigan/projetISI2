@@ -14,7 +14,8 @@ class NiveauController extends Controller
      */
     public function index()
     {
-        //
+        $niveaux = Niveau::all();
+        return view('niveaux', compact('niveaux'));
     }
 
     /**
