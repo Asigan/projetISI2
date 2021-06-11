@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Joueur;
+use App\Models\Niveau;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JoueurController extends Controller
 {
@@ -25,7 +27,8 @@ class JoueurController extends Controller
      */
     public function create()
     {
-        return view('create_joueur');
+        $niveaux = Niveau::all();
+        return view('create_joueur', compact('niveaux'));
     }
 
     /**
@@ -36,7 +39,12 @@ class JoueurController extends Controller
      */
     public function store(Request $request)
     {
-        Manga::create($request->all());
+        DB::table('joueurs')->insert([
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'nationalite' => $request->nationalite,
+            'niveau_id' => $request->niveau
+        ]);
         return view('confirm');
     }
 

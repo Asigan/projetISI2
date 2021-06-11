@@ -15,7 +15,7 @@ class Joueur extends Model
         'prenom',
         'nom',
         'nationalite',
-        'elo',
+        'niveau',
     ];
     public function parties(){
         return $this->hasMany(Partie::class);
