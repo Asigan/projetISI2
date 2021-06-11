@@ -21,6 +21,11 @@
                 <p>Classement : {{ $tournoi->classement }}</p>
                 <p>Niveau : {{ $niveau->eloMin }} - {{ $niveau->eloMax }}</p>
                 <p>Organisateur : {{ $organisateur->nom }}</p>
+                <ul>
+                @foreach($tournoi->joueurs as $joueur)
+                    <li>{{ $joueur->id }}</li>
+                @endforeach
+                </ul>
             </div>
         </div>
     </div>

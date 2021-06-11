@@ -25,7 +25,9 @@ class Joueur extends Model
     {
         return $this->hasMany(Partie::class, 'joueur2_id');
     }
-
+    public function tournois(){
+        return $this->belongsToMany(Tournoi::class, 'participes')->withPivot('participes');
+    }
     public function niveau(){
         return $this->belongsTo(Niveau::class);
     }

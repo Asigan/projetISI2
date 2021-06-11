@@ -24,10 +24,13 @@ class PartieFactory extends Factory
     public function definition()
     {
         $tournoi = Tournoi::all()->random();
-        $joueur1 = $tournoi->with("joueurs")->get()->random();
-        $joueur2 = $tournoi->with("joueurs")->get()->random();
+        while(count($tournoi->joueurs)<2){
+            $tournoi = Tournoi::all()->random();
+        }
+        $joueur1 = $tournoi->joueurs->random();
+        $joueur2 = $tournoi->joueurs->random();
         while($joueur1->id == $joueur2->id){
-            $joueur2 = $tournoi->with("joueurs")->get()->random();
+            $joueur2 = $tournoi->joueurs->random();
         }
         return [
             'date'=>$this->faker->dateTime,

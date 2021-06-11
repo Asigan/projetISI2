@@ -62,6 +62,7 @@ class TournoiController extends Controller
     {
         $organisateur = $tournoi->organisateur;
         $niveau = $tournoi->niveau;
+        
         return view('tournoi', compact('tournoi', 'organisateur', 'niveau'));
     }
 
