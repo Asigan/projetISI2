@@ -11,6 +11,6 @@ class Organisateur extends Model
     public $timestamps = false;
     protected $fillable = [
         'id',
-        'nationalite',
+        'nom',
     ];
 }

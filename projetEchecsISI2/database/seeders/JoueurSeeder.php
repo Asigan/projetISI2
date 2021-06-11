@@ -13,6 +13,6 @@ class JoueurSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Joueur::factory(10)->create();
     }
 }
