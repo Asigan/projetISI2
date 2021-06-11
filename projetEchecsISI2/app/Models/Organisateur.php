@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Organisateur extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    protected $fillable = [
+        'id',
+        'nationalite',
+    ];
 }

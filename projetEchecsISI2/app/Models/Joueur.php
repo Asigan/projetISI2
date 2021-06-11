@@ -17,4 +17,11 @@ class Joueur extends Model
         'nationalite',
         'elo',
     ];
+    public function parties(){
+        return $this->hasMany(Partie::class);
+    }
+
+    public function elo(){
+        return $this->belongsTo(Niveau::class);
+    }
 }

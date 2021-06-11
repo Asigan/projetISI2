@@ -18,7 +18,12 @@ class CreateJoueursTable extends Migration
             $table->text('prenom');
             $table->text('nom');
             $table->text('nationalite');
-            $table->integer('elo');
+            $table->unsignedBigInteger('niveau_id');
+            $table->foreign('niveau_id')
+                ->references('id')
+                ->on('niveaux')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

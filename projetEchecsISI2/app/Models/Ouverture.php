@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Ouverture extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    protected $fillable = [
+        'id',
+        'nom',
+        'premiersCoups',
+    ];
 }
