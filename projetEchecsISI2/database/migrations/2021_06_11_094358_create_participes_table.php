@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParticipeTable extends Migration
+class CreateParticipesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateParticipeTable extends Migration
      */
     public function up()
     {
-        Schema::create('participe', function (Blueprint $table) {
+        Schema::create('participes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('joueur_id');
             $table->foreign('joueur_id')
@@ -27,7 +27,7 @@ class CreateParticipeTable extends Migration
                 ->on('tournois')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->text('score');
+            $table->text('score')->default(0);
             $table->timestamps();
         });
     }
@@ -39,6 +39,6 @@ class CreateParticipeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('participe');
+        Schema::dropIfExists('participes');
     }
 }

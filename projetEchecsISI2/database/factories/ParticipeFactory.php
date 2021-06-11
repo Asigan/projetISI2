@@ -2,19 +2,19 @@
 
 namespace Database\Factories;
 
-use App\Models\Partie;
+use App\Models\Participe;
 use App\Models\Joueur;
 use App\Models\Tournoi;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PartieFactory extends Factory
+class ParticipeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Partie::class;
+    protected $model = Participe::class;
 
     /**
      * Define the model's default state.
@@ -24,16 +24,9 @@ class PartieFactory extends Factory
     public function definition()
     {
         $tournoi = Tournoi::all()->random();
-        $joueur1 = $tournoi->with("joueurs")->get()->random();
-        $joueur2 = $tournoi->with("joueurs")->get()->random();
-        while($joueur1->id == $joueur2->id){
-            $joueur2 = $tournoi->with("joueurs")->get()->random();
-        }
         return [
-            'date'=>$this->faker->dateTime,
+            'joueur_id'=> Joueur::all()->random()->id,
             'tournoi_id'=> $tournoi->id,
-            'joueur1_id'=> $joueur1->id,
-            'joueur2_id'=> $joueur2->id,
         ];
     }
 }
