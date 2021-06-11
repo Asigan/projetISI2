@@ -25,14 +25,12 @@
                         <th></th>
                     </tr>
                     </thead>
-                    @foreach($tournois as $tournoi)
-                        @if($tournoi->organisateur_id == $organisateur->id)
+                    @foreach($organisateur->tournois as $tournoi)
                         <tr>
                             <td> {{ $tournoi->nom }} </td>
                             <td> {{ $tournoi->date }} </td>
                             <td><a class="btn btn-primary" href="{{route('tournois.show', $tournoi->id) }}">Voir</a></td>
                         </tr>
-                        @endif
                     @endforeach
                 </table>
             </div>
