@@ -56,7 +56,7 @@ class JoueurController extends Controller
      */
     public function show(Joueur $joueur)
     {
-        $parties = $joueur->with('parties')->get();
+        $parties = $joueur->with('parties1')->get();
         $niveau = $joueur->niveau;
         return view('joueur', compact('joueur', 'parties', 'niveau'));
     }
