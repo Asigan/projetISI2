@@ -23,6 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('index', function () {
+    return view('index');
+});
+
 Route::get('joueurs',[JoueurController::class, 'index']);
 Route::resource('joueurs',JoueurController::class);
 

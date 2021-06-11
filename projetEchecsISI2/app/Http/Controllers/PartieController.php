@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Partie;
 use App\Models\Joueur;
+use App\Models\Tournoi;
 use Illuminate\Http\Request;
 
 class PartieController extends Controller
@@ -26,7 +27,9 @@ class PartieController extends Controller
      */
     public function create()
     {
-        return view('create_partie');
+        $joueurs = Joueur::all();
+        $tournois = Tournoi::all();
+        return view('create_partie', compact('joueurs', 'tournois'));
     }
 
     /**
@@ -37,7 +40,8 @@ class PartieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Partie::create($request->all());
+        return view('confirm');
     }
 
     /**
@@ -46,11 +50,8 @@ class PartieController extends Controller
      * @param  \App\Models\Partie  $partie
      * @return \Illuminate\Http\Response
      */
-    public function show(Partie $partie)
+    public function show(Partie $party)
     {
-        var_dump('bonjour');
-        var_dump($partie);
-        $party = $partie;
         return view('partie', compact('party'));
     }
 
@@ -83,8 +84,9 @@ class PartieController extends Controller
      * @param  \App\Models\Partie  $partie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Partie $partie)
+    public function destroy(Partie $party)
     {
-        //
+        $party->delete();
+        return back()->with('info', 'La partie a été correctement supprimé de la base de données');
     }
 }
