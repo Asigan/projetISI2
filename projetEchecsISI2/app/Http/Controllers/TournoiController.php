@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tournoi;
 use App\Models\Niveau;
 use App\Models\Organisateur;
+use App\Models\Joueur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -62,8 +63,23 @@ class TournoiController extends Controller
     {
         $organisateur = $tournoi->organisateur;
         $niveau = $tournoi->niveau;
+        $joueursnoninscrits = new Joueur;
+
+        $exception = $tournoi->joueurs->pluck('id')->toArray();
+        $joueursNonInscrits = $joueursnoninscrits->whereNotIn('id', $exception)->get();
         
-        return view('tournoi', compact('tournoi', 'organisateur', 'niveau'));
+        return view('tournoi', compact('tournoi', 'organisateur', 'niveau', 'joueursNonInscrits'));
+    }
+
+    public function showJoueurs(Tournoi $tournoi)
+    {
+        $organisateur = $tournoi->organisateur;
+
+        $joueursnoninscrits = new Joueur;
+        $exception = $tournoi->joueurs->pluck('id')->toArray();
+        $joueursNonInscrits = $joueursnoninscrits->whereNotIn('id', $exception)->get();
+        
+        return view('joueurs_tournoi', compact('tournoi','organisateur', 'joueursNonInscrits'));
     }
 
     /**

@@ -24,7 +24,7 @@ class ParticipeController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +35,8 @@ class ParticipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Participe::create($request->all());
+        return redirect()->back();
     }
 
     /**

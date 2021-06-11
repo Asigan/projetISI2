@@ -12,7 +12,7 @@
 
 <div class="card">
         <header class="card-header">
-            <h5 class="card-header-title">{{ $partie }} vs. {{ $partie }}</h5>
+            <h5 class="card-header-title">{{ $party->id }} vs. {{ $party }}</h5>
         </header>
         <div class="card-content">
             <div class="content">

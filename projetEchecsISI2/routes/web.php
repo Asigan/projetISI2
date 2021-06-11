@@ -6,6 +6,7 @@ use App\Http\Controllers\TournoiController;
 use App\Http\Controllers\NiveauController;
 use App\Http\Controllers\OrganisateurController;
 use App\Http\Controllers\PartieController;
+use App\Http\Controllers\ParticipeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,8 @@ Route::resource('organisateurs',OrganisateurController::class);
 
 Route::get('parties',[PartieController::class, 'index']);
 Route::resource('parties',PartieController::class);
+
+Route::get('participes',[ParticipeController::class, 'index']);
+Route::resource('participes',ParticipeController::class);
+
+Route::get('tournois/{tournoi}/joueurs_tournoi', [TournoiController::class, 'showJoueurs'])->name('joueurs_tournoi');

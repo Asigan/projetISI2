@@ -22,7 +22,7 @@ class Tournoi extends Model
         return $this->hasMany(Partie::class);
     }
     public function joueurs(){
-        return $this->belongsToMany(Joueur::class, 'participes');;
+        return $this->belongsToMany(Joueur::class, 'participes');
     }
     public function organisateur(){
         return $this->belongsTo(Organisateur::class);

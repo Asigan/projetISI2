@@ -48,7 +48,10 @@ class PartieController extends Controller
      */
     public function show(Partie $partie)
     {
-        return view('partie', compact('partie'));
+        var_dump('bonjour');
+        var_dump($partie);
+        $party = $partie;
+        return view('partie', compact('party'));
     }
 
     /**
