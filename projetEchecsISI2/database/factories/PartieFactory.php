@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Partie;
+use App\Models\Joueur;
+use App\Models\Tournoi;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PartieFactory extends Factory
@@ -22,7 +24,10 @@ class PartieFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'date'=>$this->faker->dateTime,
+            'tournoi_id'=> Tournoi::all()->random()->id,
+            'joueur1_id'=> Joueur::all()->random()->id,
+            'joueur2_id'=> Joueur::all()->random()->id,
         ];
     }
 }

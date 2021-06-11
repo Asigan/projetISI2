@@ -13,6 +13,6 @@ class OuvertureSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Ouverture::factory(10)->create();
     }
 }

@@ -22,7 +22,9 @@ class OuvertureFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nom'=>$this->faker->word,
+            'premiersCoups'=>$this->faker->text(40),
+            'ouverture_id'=>null,
         ];
     }
 }

@@ -13,6 +13,6 @@ class TournoiSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Tournoi::factory(10)->create();
     }
 }

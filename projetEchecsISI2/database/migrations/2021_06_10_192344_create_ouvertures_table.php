@@ -17,7 +17,7 @@ class CreateOuverturesTable extends Migration
             $table->id();
             $table->text('nom');
             $table->text('premiersCoups');
-            $table->unsignedBigInteger('ouverture_id');
+            $table->unsignedBigInteger('ouverture_id')->nullable();
             $table->foreign('ouverture_id')
                 ->references('id')
                 ->on('ouvertures')

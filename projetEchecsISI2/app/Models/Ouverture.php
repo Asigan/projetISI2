@@ -13,5 +13,6 @@ class Ouverture extends Model
         'id',
         'nom',
         'premiersCoups',
+        'ouverture_id',
     ];
 }

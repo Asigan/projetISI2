@@ -13,6 +13,6 @@ class PartieSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Partie::factory(20)->create();
     }
 }
