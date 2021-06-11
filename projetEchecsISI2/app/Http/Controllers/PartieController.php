@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Partie;
 use App\Models\Joueur;
 use App\Models\Tournoi;
+use App\Models\Participe;
 use Illuminate\Http\Request;
 
 class PartieController extends Controller
@@ -52,7 +53,8 @@ class PartieController extends Controller
      */
     public function show(Partie $party)
     {
-        return view('partie', compact('party'));
+        $participe = Participe::All();
+        return view('partie', compact('party', 'participe'));
     }
 
     /**
