@@ -20,7 +20,7 @@ use App\Http\Controllers\ParticipeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('index', function () {
@@ -46,3 +46,5 @@ Route::resource('participes',ParticipeController::class);
 
 Route::get('tournois/{tournoi}/joueurs_tournoi', [TournoiController::class, 'showJoueurs'])->name('joueurs_tournoi');
 Route::get('tournois/{tournoi}/parties_tournoi', [TournoiController::class, 'showParties'])->name('parties_tournoi');
+
+require __DIR__.'/auth.php';

@@ -5,7 +5,7 @@
 @endsection
 
 @section('titreItem')
-    <h1>Tous sur les echecs :</h1>
+    <h1>Tout sur les echecs :</h1>
 @endsection
 
 @section('contenu')

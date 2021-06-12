@@ -18,11 +18,13 @@
     </div>
 @endif
 
+    @auth
     <div class="card-body">
         <form action="{{ route('joueurs.create') }}" method="get">
             <button class="btn btn-success" type="submit">Ajouter un joueur</button>
         </form>
     </div>
+    @endauth
 
 <div class="card">
         <header class="card-header">
@@ -47,6 +49,7 @@
                             <td> {{ $joueur->prenom }} </td>
                             <td> {{ $joueur->nationalite }} </td>
                             <td><a class="btn btn-primary" href="{{route('joueurs.show', $joueur->id) }}">Voir</a></td>
+                            @auth
                             <td><a class="btn btn-warning" href="{{route('joueurs.edit', $joueur->id) }}">Modifier</a></td>
                             <td>
                                 <form action="{{ route('joueurs.destroy', $joueur->id) }}" method="post">
@@ -55,6 +58,7 @@
                                     <button class="btn btn-danger" type="submit">Supprimer</button>
                                 </form>
                             </td>
+                            @endauth
                         </tr>
                     @endforeach
                 </table>

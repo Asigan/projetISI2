@@ -30,6 +30,31 @@
                                 <li><a class="dropdown-item" href="{{url('organisateurs')}}">Les organisateurs</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            @auth
+                                <a class="nav-link dropdown-toggle" href="" id="navbardDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}        
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            @else
+                                    <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Login</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link active" aria-current="page" href="{{ route('register') }}">Register</a>
+                                </li>
+                            @endauth
+                        </li>
                     </ul>
                 </div>
             </div>
