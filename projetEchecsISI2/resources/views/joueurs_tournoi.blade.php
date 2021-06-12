@@ -55,6 +55,7 @@
                             <td> {{ $joueur->nom }} </td>
                             <td> {{ $joueur->prenom }} </td>
                             <td> {{ $joueur->nationalite }} </td>
+                            @auth
                             <td><form action="{{ route('participes.store') }}" method="POST">
                                 @csrf 
                                 <input type="hidden" name="tournoi_id" value="{{ $tournoi->id }}" />
@@ -62,6 +63,7 @@
                                 <button class="btn btn-success" type="submit">Inscrire</button>
                                 </form>
                             </td>
+                            @endauth
                             <td><a class="btn btn-primary" href="{{route('joueurs.show', $joueur->id) }}">Voir</a></td>
                         </tr>
                     @endforeach

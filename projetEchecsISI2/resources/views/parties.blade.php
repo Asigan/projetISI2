@@ -17,12 +17,14 @@
         </div>
     </div>
 @endif
-
+    
+    @auth
     <div class="card-body">
         <form action="{{ route('parties.create') }}" method="get">
             <button class="btn btn-success" type="submit">Ajouter une partie</button>
         </form>
     </div>
+    @endauth
 
 <div class="card">
         <header class="card-header">
@@ -46,6 +48,7 @@
                             <td> {{ $partie->joueur2->nom }} {{ $partie->joueur2->prenom }}</td>
                             <td> {{ $partie->date }} </td>
                             <td><a class="btn btn-primary" href="{{route('parties.show', $partie->id) }}">Voir</a></td>
+                            @auth
                             <td>
                                 <form action="{{ route('parties.destroy', $partie->id) }}" method="post">
                                     @csrf
@@ -53,6 +56,7 @@
                                     <button class="btn btn-danger" type="submit">Supprimer</button>
                                 </form>
                             </td>
+                            @endauth
                         </tr>
                     @endforeach
                 </table>
