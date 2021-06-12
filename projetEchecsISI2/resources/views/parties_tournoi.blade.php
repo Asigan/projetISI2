@@ -51,6 +51,7 @@
                             @endauth
                         </tr>
                     @endforeach
+                    @auth
                     <form action="{{ route('parties.store') }}" method="POST">
                             @csrf
                             <br>
@@ -86,6 +87,7 @@
                                 <button type="submit" class="btn btn-success">Créer</button>
                             </td>
                         </form>
+                        @endauth
                     </tr>
                 </table>
             </div>
