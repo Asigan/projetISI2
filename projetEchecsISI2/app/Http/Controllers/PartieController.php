@@ -6,7 +6,7 @@ use App\Models\Partie;
 use App\Models\Joueur;
 use App\Models\Tournoi;
 use App\Models\Participe;
-use Illuminate\Http\Request;
+use App\Http\Requests\PartieRequest;
 
 class PartieController extends Controller
 {
@@ -39,7 +39,7 @@ class PartieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PartieRequest $request)
     {
         Partie::create($request->all());
         return redirect()->back()->with('info', 'le changement a bien été effectué');
@@ -63,9 +63,11 @@ class PartieController extends Controller
      * @param  \App\Models\Partie  $partie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Partie $partie)
+    public function edit(Partie $party)
     {
-        //
+        $tournoi = $party->tournoi;
+        $joueurs = $tournoi->joueurs;
+        return view('edit_partie', compact('party', 'tournoi', 'joueurs'));
     }
 
     /**
@@ -75,9 +77,16 @@ class PartieController extends Controller
      * @param  \App\Models\Partie  $partie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Partie $partie)
+    public function update(PartieRequest $request, Partie $party)
     {
-        //
+        $party->update([
+            'date'=>$request->date,
+            'statut'=> $request->statut,
+            'joueur1_id' => $request->joueur1_id,
+            'joueur2_id' => $request->joueur2_id,
+            'tournoi_id' => $request->tournoi_id
+        ]);
+        return redirect()->back()->with('info', 'La modification a bien été effectuée');
     }
 
     /**

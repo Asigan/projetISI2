@@ -28,13 +28,7 @@ class CreatePartiesTable extends Migration
                 ->references('id')
                 ->on('joueurs')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');
-            $table->unsignedBigInteger('joueurgagne_id')->nullable();
-            $table->foreign('joueurgagne_id')
-                ->references('id')
-                ->on('joueurs')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade'); 
             $table->unsignedBigInteger('ouverture_id')->nullable();
             $table->foreign('ouverture_id')
                 ->references('id')

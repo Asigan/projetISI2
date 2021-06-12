@@ -24,8 +24,11 @@ class ParticipeFactory extends Factory
     public function definition()
     {
         $tournoi = Tournoi::all()->random();
+        $joueursnoninscrits = new Joueur;
+        $exception = $tournoi->joueurs->pluck('id')->toArray();
+        $joueurNonInscrit = $joueursnoninscrits->whereNotIn('id', $exception)->get()->random();
         return [
-            'joueur_id'=> Joueur::all()->random()->id,
+            'joueur_id'=> $joueurNonInscrit->id,
             'tournoi_id'=> $tournoi->id,
         ];
     }

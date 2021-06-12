@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class JoueurRequest extends FormRequest
+class PartieRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,11 @@ class JoueurRequest extends FormRequest
     public function rules()
     {
         return [
-            'prenom'=>['required', 'string', 'max:100'],
-            'nom'=>['required', 'string', 'max:100'] ,
-            'nationalite'=>['required', 'string', 'max:100'],
-            'niveau_id'=>['required', 'numeric', 'min:0']
+            'joueur1_id'=>['required', 'numeric', 'min:0'],
+            'joueur2_id'=>['required', 'numeric', 'min:0'] ,
+            'tournoi_id'=>['required', 'numeric', 'min:0'],
+            'date'=>['required', 'date'],
+            'statut'=>['required', 'numeric', 'min:0', 'max:4']
         ];
     }
 }

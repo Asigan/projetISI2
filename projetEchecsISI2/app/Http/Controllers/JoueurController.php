@@ -81,7 +81,7 @@ class JoueurController extends Controller
      */
     public function update(Request $request, Joueur $joueur)
     {
-        DB::table('joueurs')->update([
+        $joueur->update([
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'nationalite' => $request->nationalite,

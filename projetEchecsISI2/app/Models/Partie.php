@@ -18,9 +18,10 @@ class Partie extends Model
         'joueurgagne_id',
     ];
     public const STATUTS = [0=>'Plannifiée', 
-                            1=>'Gagnee',
-                            2=>'Nulle',
-                            3=>'Annulée'];
+                            1=>'Gagnee par joueur1',
+                            2=>'Gagnee par joueur2',
+                            3=>'Nulle',
+                            4=>'Annulée'];
 
     public function tournoi()
     {
