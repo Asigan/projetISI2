@@ -30,6 +30,7 @@
                         <th>Joueur 1</th>
                         <th>Joueur 2</th>
                         <th>Date</th>
+                        <th>Statut</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -39,6 +40,7 @@
                             <td> {{ $partie->joueur1->nom }} {{ $partie->joueur1->prenom }}</td>
                             <td> {{ $partie->joueur2->nom }} {{ $partie->joueur2->prenom }}</td>
                             <td> {{ $partie->date }} </td>
+                            <td> {{ $partie->status()}} </td>
                             <td><a class="btn btn-primary" href="{{route('parties.show', $partie->id) }}">Voir</a></td>
                             @auth
                             <td>
