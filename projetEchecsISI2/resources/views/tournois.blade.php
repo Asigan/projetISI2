@@ -37,6 +37,7 @@
                         <th>Date</th>
                         <th></th>
                         <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     @foreach($tournois as $tournoi)
@@ -44,6 +45,7 @@
                             <td> {{ $tournoi->nom }} </td>
                             <td> {{ $tournoi->date }} </td>
                             <td><a class="btn btn-primary" href="{{route('tournois.show', $tournoi->id) }}">Voir</a></td>
+                            <td><a class="btn btn-warning" href="{{route('tournois.edit', $tournoi->id) }}">Modifier</a></td>
                             <td>
                                 <form action="{{ route('tournois.destroy', $tournoi->id) }}" method="post">
                                     @csrf
