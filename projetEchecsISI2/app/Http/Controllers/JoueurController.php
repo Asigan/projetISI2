@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Joueur;
 use App\Models\Niveau;
-use Illuminate\Http\Request;
+use App\Http\Requests\JoueurRequest;
 use Illuminate\Support\Facades\DB;
 
 class JoueurController extends Controller
@@ -37,13 +37,13 @@ class JoueurController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JoueurRequest $request)
     {
         DB::table('joueurs')->insert([
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'nationalite' => $request->nationalite,
-            'niveau_id' => $request->niveau
+            'niveau_id' => $request->niveau_id
         ]);
         return view('confirm');
     }
@@ -79,7 +79,7 @@ class JoueurController extends Controller
      * @param  \App\Models\Joueur  $joueur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Joueur $joueur)
+    public function update(JoueurRequest $request, Joueur $joueur)
     {
         $joueur->update([
             'nom' => $request->nom,
