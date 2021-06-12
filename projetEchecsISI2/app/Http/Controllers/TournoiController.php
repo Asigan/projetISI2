@@ -98,7 +98,9 @@ class TournoiController extends Controller
      */
     public function edit(Tournoi $tournoi)
     {
-        return view('edit', compact('tournoi'));
+        $niveaux = Niveau::all();
+        $organisateurs = Organisateur::all();
+        return view('edit_tournoi', compact('tournoi', 'niveaux', 'organisateurs'));
     }
 
     /**
