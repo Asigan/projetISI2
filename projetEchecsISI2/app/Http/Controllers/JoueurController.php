@@ -68,7 +68,8 @@ class JoueurController extends Controller
      */
     public function edit(Joueur $joueur)
     {
-        return view('edit', compact('joueur'));
+        $niveaux = Niveau::all();
+        return view('edit_joueur', compact('joueur', 'niveaux'));
     }
 
     /**
@@ -80,7 +81,12 @@ class JoueurController extends Controller
      */
     public function update(Request $request, Joueur $joueur)
     {
-        $joueur->update($request->all());
+        DB::table('joueurs')->update([
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'nationalite' => $request->nationalite,
+            'niveau_id' => $request->niveau_id
+        ]);
         return redirect()->back()->with('info', 'Le joueur a bien été modifié dans la base de données');
     }
 

@@ -38,6 +38,7 @@
                         <th>Nationalite</th>
                         <th></th>
                         <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     @foreach($joueurs as $joueur)
@@ -46,6 +47,7 @@
                             <td> {{ $joueur->prenom }} </td>
                             <td> {{ $joueur->nationalite }} </td>
                             <td><a class="btn btn-primary" href="{{route('joueurs.show', $joueur->id) }}">Voir</a></td>
+                            <td><a class="btn btn-warning" href="{{route('joueurs.edit', $joueur->id) }}">Modifier</a></td>
                             <td>
                                 <form action="{{ route('joueurs.destroy', $joueur->id) }}" method="post">
                                     @csrf
