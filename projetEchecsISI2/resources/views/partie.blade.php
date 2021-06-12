@@ -18,6 +18,7 @@
             <div class="content">
                 <p>Date de la partie : {{ $party->date }}</p>
                 <p>Tournoi correspondant : {{ $party->tournoi->nom }} <a class="btn btn-primary" href="{{route('tournois.show', $party->tournoi->id) }}">Voir</a></p>
+                <p>Statut: {{ $status}}</p>
                 <p><a class="btn btn-secondary" href="{{ route('parties.edit', $party->id )}}">Modifier</a></p>
             </div>
         </div>

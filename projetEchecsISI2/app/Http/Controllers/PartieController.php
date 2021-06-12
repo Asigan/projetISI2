@@ -54,7 +54,8 @@ class PartieController extends Controller
     public function show(Partie $party)
     {
         $participe = Participe::All();
-        return view('partie', compact('party', 'participe'));
+        $status = $party->status();
+        return view('partie', compact('party', 'participe', 'status'));
     }
 
     /**

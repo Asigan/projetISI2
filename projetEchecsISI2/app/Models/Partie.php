@@ -17,11 +17,6 @@ class Partie extends Model
         'joueur2_id',
         'joueurgagne_id',
     ];
-    public const STATUTS = [0=>'Plannifiée', 
-                            1=>'Gagnee par joueur1',
-                            2=>'Gagnee par joueur2',
-                            3=>'Nulle',
-                            4=>'Annulée'];
 
     public function tournoi()
     {
@@ -46,4 +41,18 @@ class Partie extends Model
     {
         return $this->belongsTo(Ouverture::class);
     }
+    public function getStatut($status)
+    {
+        $STATUTS = [0=>'Plannifiée', 
+                    1=>'Gagnee par '.$this->joueur1->nom.' '.$this->joueur1->prenom,
+                    2=>'Gagnee par '.$this->joueur2->nom." ".$this->joueur2->prenom,
+                    3=>'Nulle',
+                    4=>'Annulée'];
+        $nom_statut =  $STATUTS[$status];
+        return $nom_statut;
+    }
+    public function status(){
+       return $this->getStatut($this->statut);
+    }
+    
 }
