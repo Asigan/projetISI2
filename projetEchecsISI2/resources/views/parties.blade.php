@@ -33,6 +33,7 @@
                         <th>Statut</th>
                         <th></th>
                         <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     @foreach($parties as $partie)
@@ -43,6 +44,7 @@
                             <td> {{ $partie->status()}} </td>
                             <td><a class="btn btn-primary" href="{{route('parties.show', $partie->id) }}">Voir</a></td>
                             @auth
+                            <td><a class="btn btn-warning" href="{{route('parties.edit', $partie->id)}}">Modifier</a></td>
                             <td>
                                 <form action="{{ route('parties.destroy', $partie->id) }}" method="post">
                                     @csrf
