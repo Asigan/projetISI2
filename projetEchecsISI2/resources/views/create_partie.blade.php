@@ -47,6 +47,7 @@
                         @enderror
                     </div>
                     <br>
+                    <input type="hidden" name="statut" id="statut" value="0" />
                     <button type="submit" class="btn btn-secondary">Créer</button>
                 </form>
             </div>        

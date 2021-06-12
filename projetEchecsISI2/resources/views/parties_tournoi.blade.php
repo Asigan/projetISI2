@@ -58,6 +58,9 @@
                                         <option value="{{ $joueur->id }}">{{ $joueur->nom }} {{ $joueur->prenom }}</option>
                                     @endforeach
                                 </select>
+                                @error('joueur1_id')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </td>
                             <td class="form-group">
                                 <select name="joueur2_id" id="joueur2_id" size="1">
@@ -65,6 +68,9 @@
                                         <option value="{{ $joueur->id }}">{{ $joueur->nom }} {{ $joueur->prenom }}</option>
                                     @endforeach
                                 </select>
+                                @error('joueur2_id')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </td>
                             <td class="form-group">
                                 <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date" placeholder="Date de la partie">
@@ -73,6 +79,7 @@
                                 @enderror
                             </td>
                             <td>
+                                <input type="hidden" name="statut" id="statut" value="0" />
                                 <input type="hidden" name="tournoi_id" id="tournoi_id" value="{{ $tournoi->id }}" />
                                 <button type="submit" class="btn btn-success">Créer</button>
                             </td>
