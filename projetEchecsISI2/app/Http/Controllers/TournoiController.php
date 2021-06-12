@@ -112,14 +112,7 @@ class TournoiController extends Controller
      */
     public function update(TournoiRequest $request, Tournoi $tournoi)
     {
-        $tournoi->update([
-            'nom'=>$request->nom,
-            'date'=>$request->date,
-            'adresse'=>$request->adresse,
-            'classement'=>$request->classement,
-            'niveau_id'=>$request->niveau_id,
-            'organisateur_id'=>$request->organisateur_id
-        ]);
+        $tournoi->update($request->all());
         return redirect()->back()->with('info', 'Le tournoi a bien été modifié dans la base de données');
     }
 

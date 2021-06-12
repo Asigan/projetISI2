@@ -31,11 +31,14 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        Niveau du joueur : <select name="niveau" id="niveau" size="1">
+                        Niveau du joueur : <select name="niveau_id" id="niveau_id" size="1">
                             @foreach($niveaux as $niveau)
                                 <option value="{{ $niveau->id }}">{{ $niveau->nom }}</option>
                             @endforeach
                         </select>
+                        @error('niveau_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror 
                     </div>
                     <br>
                     <button type="submit" class="btn btn-secondary">Créer</button>
