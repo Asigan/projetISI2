@@ -22,6 +22,7 @@
                 <p>Niveau : {{ $niveau->eloMin }} - {{ $niveau->eloMax }}</p>
                 <p>Organisateur : {{ $organisateur->nom }}</p>
                 <a class="btn btn-primary" href="{{ route('joueurs_tournoi', $tournoi->id) }}">Voir les joueurs</a>
+                <a class="btn btn-primary" href="{{ route('parties_tournoi', $tournoi->id) }}">Voir les parties</a>
             </div>
         </div>
     </div>

@@ -82,6 +82,14 @@ class TournoiController extends Controller
         return view('joueurs_tournoi', compact('tournoi','organisateur', 'joueursNonInscrits'));
     }
 
+    public function showParties(Tournoi $tournoi)
+    {
+        $organisateur = $tournoi->organisateur;
+        $parties = $tournoi->parties;
+        $joueurs = $tournoi->joueurs;
+        return view('parties_tournoi', compact('tournoi','organisateur', 'joueurs', 'parties'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

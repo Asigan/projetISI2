@@ -41,7 +41,7 @@ class PartieController extends Controller
     public function store(Request $request)
     {
         Partie::create($request->all());
-        return view('confirm');
+        return redirect()->back()->with('info', 'le changement a bien été effectué');
     }
 
     /**
