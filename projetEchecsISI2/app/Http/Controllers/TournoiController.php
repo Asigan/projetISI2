@@ -6,7 +6,7 @@ use App\Models\Tournoi;
 use App\Models\Niveau;
 use App\Models\Organisateur;
 use App\Models\Joueur;
-use Illuminate\Http\Request;
+use App\Http\Requests\TournoiRequest;
 use Illuminate\Support\Facades\DB;
 
 class TournoiController extends Controller
@@ -40,15 +40,15 @@ class TournoiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TournoiRequest $request)
     {
         DB::table('tournois')->insert([
             'nom' => $request->nom,
             'date' => $request->date,
             'adresse' => $request->adresse,
             'classement' => $request->classement,
-            'niveau_id' => $request->niveau,
-            'organisateur_id' => $request->organisateur
+            'niveau_id' => $request->niveau_id,
+            'organisateur_id' => $request->organisateur_id
         ]);
         return view('confirm');
     }
@@ -110,9 +110,16 @@ class TournoiController extends Controller
      * @param  \App\Models\Tournoi  $tournoi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tournoi $tournoi)
+    public function update(TournoiRequest $request, Tournoi $tournoi)
     {
-        $tournoi->update($request->all());
+        $tournoi->update([
+            'nom'=>$request->nom,
+            'date'=>$request->date,
+            'adresse'=>$request->adresse,
+            'classement'=>$request->classement,
+            'niveau_id'=>$request->niveau_id,
+            'organisateur_id'=>$request->organisateur_id
+        ]);
         return redirect()->back()->with('info', 'Le tournoi a bien été modifié dans la base de données');
     }
 

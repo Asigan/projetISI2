@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class JoueurRequest extends FormRequest
+class TournoiRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,11 @@ class JoueurRequest extends FormRequest
     {
         return [
             'nom'=>['required', 'string', 'max:100'],
-            'date'=>['required', 'string', 'min:10', 'max:10'] ,
+            'date'=>['required', 'date'] ,
             'adresse'=>['required', 'string', 'max:200'],
             'classement'=>['required', 'string', 'max:500'],
-            'elo'=>['required', 'numeric', 'min:0'],
-            'organisateur'=>['required', 'string', 'max:100']
+            'niveau_id'=>[ 'required', 'numeric', 'min:0'],
+            'organisateur_id'=>['required', 'numeric', 'min:0']
         ];
     }
 }

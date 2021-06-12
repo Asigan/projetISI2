@@ -25,7 +25,7 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <input type="text" class="form-control @error('date') is-invalid @enderror" name="date" id="date" value="{{ old('date', $tournoi->date) }}" placeholder="Date du tournoi">  
+                        <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date" value="{{ old('date', $tournoi->date) }}" placeholder="Date du tournoi">  
                         @error('date')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror               
@@ -55,6 +55,9 @@
                                 >{{ $niveau->nom }}</option>
                             @endforeach
                         </select>
+                        @error('niveau_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror 
                     </div>
                     <br>
                     <div class="form-group">
@@ -67,6 +70,9 @@
                                 >{{ $organisateur->nom }}</option>
                             @endforeach
                         </select>
+                        @error('organisateur_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror 
                     </div>
                     <br>
                     <button type="submit" class="btn btn-secondary">Modifier</button>

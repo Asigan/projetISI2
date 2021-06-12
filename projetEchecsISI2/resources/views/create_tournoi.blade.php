@@ -17,7 +17,7 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <input type="text" class="form-control @error('date') is-invalid @enderror" name="date" id="date" placeholder="Date du tournoi">  
+                        <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date" placeholder="Date du tournoi">  
                         @error('date')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror               
@@ -38,17 +38,17 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        Niveau du tournoi : <select name="niveau" id="niveau" size="1">
+                        Niveau du tournoi : <select name="niveau_id" id="niveau_id" size="1">
                             @foreach($niveaux as $niveau)
-                                <option value="{{ $niveau->id }}">{{ $niveau->id }}</option>
+                                <option value="{{ $niveau->id }}">{{ $niveau->nom }}</option>
                             @endforeach
                         </select>
                     </div>
                     <br>
                     <div class="form-group">
-                        Organisateur du tournoi : <select name="organisateur" id="organisateur" size="1">
+                        Organisateur du tournoi : <select name="organisateur_id" id="organisateur_id" size="1">
                             @foreach($organisateurs as $organisateur)
-                                <option value="{{ $organisateur->id }}">{{ $organisateur->id }}</option>
+                                <option value="{{ $organisateur->id }}">{{ $organisateur->nom }}</option>
                             @endforeach
                         </select>
                     </div>
