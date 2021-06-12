@@ -41,7 +41,7 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date" placeholder="Date de la partie">
+                        Date : <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date" placeholder="Date de la partie">
                         @error('date')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
